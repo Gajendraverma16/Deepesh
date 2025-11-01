@@ -1,0 +1,630 @@
+import React, { useState, useEffect } from 'react';
+
+const ModernPresentationSite = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll effect for navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+const slides = [
+  {
+    title: "Crafting Cinematic Visual Stories",
+    subtitle: "Professional Video Editing & Motion Design",
+    description:
+      "Transform raw footage into stunning cinematic visuals. From storytelling edits to high-end motion graphics, we bring your vision to life.",
+    video: "https://v1.pinimg.com/videos/iht/hls/5f/44/9d/5f449dcb96c1902875b2b73fd38cb737.m3u8",
+    gradient: "from-gray-900/70 to-gray-800/60",
+  },
+  {
+    title: "Design That Moves",
+    subtitle: "Dynamic Motion Graphics for Brands & Creators",
+    description:
+      "Create visually engaging motion graphics that elevate your brand and captivate audiences.",
+     video:"https://v1.pinimg.com/videos/mc/hls/7b/a6/6f/7ba66fc09215bb43f77da635aaa64d74.m3u8",
+    gradient: "from-gray-900/70 to-gray-700/60",
+  },
+  {
+    title: "Edit. Animate. Inspire.",
+    subtitle: "Where Creativity Meets Precision",
+    description:
+      "Every frame, transition, and sound is carefully crafted to evoke emotion and deliver impact.",
+    video: "https://v1.pinimg.com/videos/mc/hls/a4/f4/a4/a4f4a43366cabe30ad947f172fb2e3ea.m3u8",
+    gradient: "from-gray-900/70 to-gray-800/60",
+  },
+];
+
+const services = [
+  {
+    icon: "🎬",
+    title: "Video Editing",
+    description:
+      "Professional editing for commercials, YouTube, short films, and social media content.",
+    price: "Starting from $200",
+  },
+  {
+    icon: "🎞️",
+    title: "Color Grading",
+    description:
+      "Cinematic color correction and grading for consistent tone and visual storytelling.",
+    price: "Starting from $150",
+  },
+  {
+    icon: "🔥",
+    title: "Motion Graphics",
+    description:
+      "Custom animations, kinetic typography, and stylish visual effects.",
+    price: "Starting from $250",
+  },
+  {
+    icon: "📱",
+    title: "Social Media Reels",
+    description:
+      "Dynamic, fast-paced edits designed to grab attention on Instagram, YouTube, and TikTok.",
+    price: "Starting from $100",
+  },
+  {
+    icon: "📺",
+    title: "Brand Video Production",
+    description:
+      "Complete post-production support for brand films, ads, and promo videos.",
+    price: "Starting from $300",
+  },
+  {
+    icon: "🎧",
+    title: "Sound Design",
+    description:
+      "Sound mixing, voice-over sync, and background music that enhances emotion.",
+    price: "Starting from $120",
+  },
+];
+
+const features = [
+  {
+    icon: "⚡",
+    title: "Fast Turnaround",
+    description: "Quick delivery without compromising quality.",
+  },
+  {
+    icon: "🎨",
+    title: "Creative Storytelling",
+    description:
+      "Each project is approached with unique visual storytelling and rhythm.",
+  },
+  {
+    icon: "💻",
+    title: "4K Workflow",
+    description: "Professional editing pipeline optimized for high-resolution content.",
+  },
+  {
+    icon: "🧠",
+    title: "Concept to Final Cut",
+    description:
+      "From idea development to polished delivery — everything handled seamlessly.",
+  },
+  {
+    icon: "📦",
+    title: "Flexible Packages",
+    description:
+      "Customizable pricing plans for freelancers, brands, and agencies.",
+  },
+  {
+    icon: "💯",
+    title: "Client Satisfaction",
+    description: "Trusted by creators and brands for consistent, high-quality results.",
+  },
+];
+
+const testimonials = [
+  {
+    name: "Aarav Mehta",
+    role: "YouTuber & Content Creator",
+    image:
+      "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=150&h=150&fit=crop",
+    text: "His editing completely changed the game for my YouTube channel. Every video now feels cinematic and professional!",
+    rating: 5,
+  },
+  {
+    name: "Simran Kaur",
+    role: "Brand Manager, UrbanBeat",
+    image:
+      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=150&h=150&fit=crop",
+    text: "Our product videos finally match the brand’s energy! Sleek transitions, perfect pacing, and elegant motion design.",
+    rating: 5,
+  },
+  {
+    name: "Rohan Verma",
+    role: "Filmmaker",
+    image:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop",
+    text: "The attention to detail in editing and motion work is unmatched. Perfect timing, great eye for composition.",
+    rating: 5,
+  },
+];
+
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 8000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#f9f7f4]">
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+      
+      {/* Navigation */}
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center space-x-2">
+              <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-xl font-serif">D</span>
+              </div>
+              <span className={`font-serif font-semibold text-2xl tracking-tight ${scrolled ? 'text-gray-900' : 'text-white'}`}>
+                Deepesh
+              </span>
+            </div>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#home" className={`font-normal transition-colors ${
+                scrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
+              }`}>Home</a>
+              <a href="#services" className={`font-normal transition-colors ${
+                scrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
+              }`}>Services</a>
+              <a href="#about" className={`font-normal transition-colors ${
+                scrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
+              }`}>About</a>
+              <a href="#testimonials" className={`font-normal transition-colors ${
+                scrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
+              }`}>Testimonials</a>
+              <button className="bg-gray-900 text-white px-6 py-2.5 rounded-full font-normal hover:bg-gray-800 transition-all">
+                Book Appoinment
+              </button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden"
+            >
+              <div className="w-6 h-5 flex flex-col justify-between">
+                <span className={`w-full h-0.5 ${scrolled ? 'bg-gray-900' : 'bg-white'} transition-all`}></span>
+                <span className={`w-full h-0.5 ${scrolled ? 'bg-gray-900' : 'bg-white'} transition-all`}></span>
+                <span className={`w-full h-0.5 ${scrolled ? 'bg-gray-900' : 'bg-white'} transition-all`}></span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-200">
+            <div className="px-4 py-3 space-y-3">
+              <a href="#home" className="block text-gray-700 hover:text-gray-900 font-normal py-2">Home</a>
+              <a href="#services" className="block text-gray-700 hover:text-gray-900 font-normal py-2">Services</a>
+              <a href="#about" className="block text-gray-700 hover:text-gray-900 font-normal py-2">About</a>
+              <a href="#testimonials" className="block text-gray-700 hover:text-gray-900 font-normal py-2">Testimonials</a>
+              <button className="w-full bg-gray-900 text-white px-6 py-2.5 rounded-full font-normal">
+                 Book Appoinment
+              </button>
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Slider */}
+     <section id="home" className="relative h-screen overflow-hidden">
+  {slides.map((slide, index) => (
+    <div
+      key={index}
+      className={`absolute inset-0 transition-opacity duration-1000 ${
+        index === currentSlide ? 'opacity-100' : 'opacity-0'
+      }`}
+    >
+      <div className="absolute inset-0 overflow-hidden">
+        {slide.video ? (
+          <video
+            src={slide.video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover absolute inset-0"
+          />
+        ) : (
+          <div
+            className="w-full h-full bg-cover bg-center"
+            style={{ backgroundImage: `url(${slide.image})` }}
+          />
+        )}
+        <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient}`} />
+      </div>
+
+      <div className="relative h-full flex items-center z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-3xl">
+            <div className="mb-6 animate-fade-in">
+              <span className="inline-block bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-normal italic">
+                {slide.subtitle}
+              </span>
+            </div>
+            <h1 className="text-5xl lg:text-7xl font-serif font-normal text-white mb-6 leading-tight animate-slide-up tracking-tight">
+              {slide.title}
+            </h1>
+            <p className="text-xl lg:text-2xl text-white/80 mb-8 leading-relaxed animate-slide-up-delay font-light">
+              {slide.description}
+            </p>
+            <div className="flex flex-wrap gap-4 animate-fade-in-delay">
+              <button className="bg-white text-gray-900 px-8 py-4 rounded-full font-normal text-lg hover:bg-gray-100 transition-all">
+                Start Planning
+              </button>
+              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-normal text-lg hover:bg-white hover:text-gray-900 transition-all">
+                View Portfolio
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  {/* Slider Controls */}
+  <button
+    onClick={prevSlide}
+    className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center transition-all group"
+  >
+    <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <button
+    onClick={nextSlide}
+    className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center transition-all group"
+  >
+    <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+
+  {/* Slider Indicators */}
+  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
+    {slides.map((_, index) => (
+      <button
+        key={index}
+        onClick={() => setCurrentSlide(index)}
+        className={`h-2 rounded-full transition-all ${
+          index === currentSlide ? 'w-12 bg-white' : 'w-2 bg-white/50'
+        }`}
+      />
+    ))}
+  </div>
+</section>
+
+      {/* Features Section */}
+      <section className="py-24 bg-[#f4f1ed]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-gray-900/5 text-gray-700 px-4 py-2 rounded-full text-sm font-normal mb-4">
+              Why Choose Us
+            </span>
+            <h2 className="text-4xl lg:text-5xl font-serif font-normal text-gray-900 mb-6 tracking-tight">
+              Everything You Need for <span className="italic">Perfect Vidios</span>
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-light leading-relaxed">
+              We provide comprehensive Perfect Vidio planning services with attention to every detail
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <div key={index} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
+                <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:bg-gray-900 group-hover:scale-110 transition-all">
+                  <span className="group-hover:grayscale">{feature.icon}</span>
+                </div>
+                <h3 className="text-xl font-serif font-normal text-gray-900 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-700 leading-relaxed font-light">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-gray-900/5 text-gray-700 px-4 py-2 rounded-full text-sm font-normal mb-4">
+              Our Services
+            </span>
+            <h2 className="text-4xl lg:text-5xl font-serif font-normal text-gray-900 mb-6 tracking-tight">
+              Comprehensive <span className="italic">Perfect Vidio Solutions</span>
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-light leading-relaxed">
+              From intimate gatherings to grand celebrations, we handle it all
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div key={index} className="bg-[#f4f1ed] p-8 rounded-2xl hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-gray-200">
+                <div className="text-6xl mb-6">{service.icon}</div>
+                <h3 className="text-2xl font-serif font-normal text-gray-900 mb-4">
+                  {service.title}
+                </h3>
+                <p className="text-gray-700 mb-6 leading-relaxed font-light">
+                  {service.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-900 font-medium text-lg">{service.price}</span>
+                  <button className="bg-gray-900 text-white px-6 py-2 rounded-full font-normal hover:bg-gray-800 transition-all">
+                    Learn More
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-24 bg-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-normal mb-4">
+                About Us
+              </span>
+              <h2 className="text-4xl lg:text-5xl font-serif font-normal mb-6 tracking-tight">
+                Creating Memories That Last Forever
+              </h2>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed font-light">
+                With over 10 years of experience, we've planned and executed thousands of successful Perfect Vidios. Our passion is turning your vision into reality.
+              </p>
+              <div className="grid grid-cols-2 gap-6 mb-8">
+                <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6">
+                  <div className="text-4xl font-serif font-normal text-white mb-2">500+</div>
+                  <div className="text-gray-300 font-light">Perfect Vidios Planned</div>
+                </div>
+                <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6">
+                  <div className="text-4xl font-serif font-normal text-white mb-2">98%</div>
+                  <div className="text-gray-300 font-light">Client Satisfaction</div>
+                </div>
+                <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6">
+                  <div className="text-4xl font-serif font-normal text-white mb-2">50+</div>
+                  <div className="text-gray-300 font-light">Team Members</div>
+                </div>
+                <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6">
+                  <div className="text-4xl font-serif font-normal text-white mb-2">10+</div>
+                  <div className="text-gray-300 font-light">Years Experience</div>
+                </div>
+              </div>
+              <button className="bg-white text-gray-900 px-8 py-4 rounded-full font-normal text-lg hover:bg-gray-100 transition-all">
+                Learn Our Story
+              </button>
+            </div>
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=1000&fit=crop"
+                alt="Perfect Vidio"
+                className="rounded-2xl shadow-2xl"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-2xl">
+                    🏆
+                  </div>
+                  <div>
+                    <div className="font-serif font-normal text-gray-900">Award Winning</div>
+                    <div className="text-sm text-gray-600 font-light">Best Perfect Vidio Planners 2024</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+       {/* Testimonials Section */}
+    
+      {/* Contact Section */}
+      <section id="contact" className="py-20 max-w-4xl mx-auto px-6 text-center">
+        <h2 className="text-3xl font-serif mb-6">Let’s Work Together</h2>
+        <p className="text-gray-700 mb-8">
+          Whether it’s a wedding, engagement, or cinematic story, we’d love to
+          create something beautiful with you.
+        </p>
+        <a
+          href="mailto:hello@weddingportfolio.com"
+          className="inline-block px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition"
+        >
+          Contact Us
+        </a>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-24 bg-[#f4f1ed]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-gray-900/5 text-gray-700 px-4 py-2 rounded-full text-sm font-normal mb-4">
+              Testimonials
+            </span>
+            <h2 className="text-4xl lg:text-5xl font-serif font-normal text-gray-900 mb-6 tracking-tight">
+              What Our <span className="italic">Clients Say</span>
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-light leading-relaxed">
+              Don't just take our word for it — hear from our happy clients
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white p-8 rounded-2xl hover:shadow-md transition-all duration-300 border border-gray-200">
+                <div className="flex text-gray-900 text-xl mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i}>★</span>
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-6 leading-relaxed italic font-light">
+                  "{testimonial.text}"
+                </p>
+                <div className="flex items-center">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-14 h-14 rounded-full object-cover mr-4 border-2 border-gray-200"
+                  />
+                  <div>
+                    <div className="font-serif font-normal text-gray-900">{testimonial.name}</div>
+                    <div className="text-sm text-gray-600 font-light">{testimonial.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-gray-900 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl lg:text-5xl font-serif font-normal mb-6 tracking-tight">
+            Ready to Plan Your Dream Perfect Vidio?
+          </h2>
+          <p className="text-xl mb-8 text-gray-300 font-light leading-relaxed">
+            Let's create something extraordinary together. Get started with a free consultation today.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button className="bg-white text-gray-900 px-8 py-4 rounded-full font-normal text-lg hover:bg-gray-100 transition-all">
+              Schedule Consultation
+            </button>
+            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-normal text-lg hover:bg-white hover:text-gray-900 transition-all">
+              Contact Us
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-[#f9f7f4] text-gray-600 py-12 border-t border-gray-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-xl font-serif">E</span>
+                </div>
+                <span className="font-serif font-semibold text-2xl text-gray-900 tracking-tight">Deepesh</span>
+              </div>
+              <p className="text-gray-700 font-light">
+                Creating unforgettable moments and extraordinary experiences since 2014.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-serif font-normal text-gray-900 mb-4">Services</h4>
+              <ul className="space-y-2 text-gray-700 font-light">
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Wedding Planning</a></li>
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Corporate Perfect Vidios</a></li>
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Social Perfect Vidios</a></li>
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Destination Perfect Vidios</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-serif font-normal text-gray-900 mb-4">Company</h4>
+              <ul className="space-y-2 text-gray-700 font-light">
+                <li><a href="#" className="hover:text-gray-900 transition-colors">About Us</a></li>
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Our Team</a></li>
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Careers</a></li>
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-serif font-normal text-gray-900 mb-4">Connect</h4>
+              <div className="flex space-x-4">
+                <a href="#" className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors">
+                  <span className="text-xl">f</span>
+                </a>
+                <a href="#" className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors">
+                  <span className="text-xl">𝕏</span>
+                </a>
+                <a href="#" className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors">
+                  <span className="text-xl">in</span>
+                </a>
+                <a href="#" className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors">
+                  <span className="text-xl">📷</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-gray-300 pt-8 text-center text-gray-700 font-light">
+            <p>© 2024 Deepesh. All rights reserved. · Designed with love</p>
+          </div>
+        </div>
+      </footer>
+
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+          font-family: 'Inter', sans-serif;
+        }
+        
+        .font-serif {
+          font-family: 'Playfair Display', serif;
+        }
+        
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes slide-up {
+          from { 
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to { 
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fade-in {
+          animation: fade-in 1s ease-out;
+        }
+        .animate-fade-in-delay {
+          animation: fade-in 1s ease-out 0.6s both;
+        }
+        .animate-slide-up {
+          animation: slide-up 0.8s ease-out;
+        }
+        .animate-slide-up-delay {
+          animation: slide-up 0.8s ease-out 0.3s both;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default ModernPresentationSite;
