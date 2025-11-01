@@ -26,7 +26,7 @@ const slides = [
   },
   {
     title: "Design That Moves",
-    subtitle: "Dynamic Motion Graphics for Brands & Creators",
+    subtitle: "Refining Stories. Maximizing Impact",
     description:
       "Create visually engaging motion graphics that elevate your brand and captivate audiences.",
      video:"https://v1.pinimg.com/videos/iht/hls/6a/78/da/6a78da359d265af07210b50feb3adff9.m3u8",
@@ -44,46 +44,44 @@ const slides = [
 
 const services = [
   {
-    icon: "🎬",
+    icon: "🎞️",
     title: "Video Editing",
     description:
       "Professional editing for commercials, YouTube, short films, and social media content.",
-    price: "Starting from $200",
   },
   {
-    icon: "🎞️",
-    title: "Color Grading",
+    icon: "🎨",
+    title: "Graphic Design",
     description:
-      "Cinematic color correction and grading for consistent tone and visual storytelling.",
-    price: "Starting from $150",
+      "The creation of visual content to communicate ideas through the use of colors, shapes, images, and text.",
+ 
   },
   {
-    icon: "🔥",
+    icon:"🚴‍♀️",
     title: "Motion Graphics",
     description:
       "Custom animations, kinetic typography, and stylish visual effects.",
-    price: "Starting from $250",
+   
+  },
+  {
+    icon: "💻",
+    title: "Web Design & Development",
+    description:
+      "We design and develop websites that look exceptional and work flawlessly.",
+    
   },
   {
     icon: "📱",
-    title: "Social Media Reels",
+    title: "Social Media Management",
     description:
-      "Dynamic, fast-paced edits designed to grab attention on Instagram, YouTube, and TikTok.",
-    price: "Starting from $100",
-  },
-  {
-    icon: "📺",
-    title: "Brand Video Production",
-    description:
-      "Complete post-production support for brand films, ads, and promo videos.",
-    price: "Starting from $300",
+      "We craft engaging social strategies and content that grow your brand and connect with your audience",
+    
   },
   {
     icon: "🎧",
     title: "Sound Design",
     description:
       "Sound mixing, voice-over sync, and background music that enhances emotion.",
-    price: "Starting from $120",
   },
 ];
 
@@ -94,13 +92,13 @@ const features = [
     description: "Quick delivery without compromising quality.",
   },
   {
-    icon: "🎨",
+    icon: "📖",
     title: "Creative Storytelling",
     description:
       "Each project is approached with unique visual storytelling and rhythm.",
   },
   {
-    icon: "💻",
+    icon: "🖥️",
     title: "4K Workflow",
     description: "Professional editing pipeline optimized for high-resolution content.",
   },
@@ -118,8 +116,8 @@ const features = [
   },
   {
     icon: "💯",
-    title: "Client Satisfaction",
-    description: "Trusted by creators and brands for consistent, high-quality results.",
+    title: "Our Promise",
+    description: "At Orion Dusk, we blend creativity and precision to craft impactful, memorable work."
   },
 ];
 
@@ -133,20 +131,18 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: "Simran Kaur",
-    role: "Brand Manager, UrbanBeat",
-    image:
-      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=150&h=150&fit=crop",
-    text: "Our product videos finally match the brand’s energy! Sleek transitions, perfect pacing, and elegant motion design.",
-    rating: 5,
+    name: "Shreejita De",
+    role: "Actress",
+    text: "I'm impressed with the team's commitment to customer satisfaction and success",
+    rating: 4,
   },
   {
-    name: "Rohan Verma",
+    name: "Ashish Verma",
     role: "Filmmaker",
     image:
       "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop",
     text: "The attention to detail in editing and motion work is unmatched. Perfect timing, great eye for composition.",
-    rating: 5,
+    rating: 4,
   },
 ];
 
@@ -177,13 +173,23 @@ const testimonials = [
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
     <div className="flex items-center justify-between h-20 pt-3 pr-6">
       {/* ✅ Logo Section */}
-      <div className="flex items-center">
-        <img
-            src={scrolled ? "/a.png" : "/b.png"} // 👉 Replace with your logo path
-          alt="Logo"
-          className="h-12 sm:h-14 md:h-16 w-auto object-contain"
-        />
-      </div>
+   <div className="flex items-center">
+  <img
+    src={scrolled ? "/a.png" : "/b.png"} // Dark logo when scrolled, light logo otherwise
+    alt="Logo"
+    className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-all duration-300"
+  />
+
+  <span
+    className={`pl-2 font-bold text-2xl tracking-tight transition-colors duration-300 ${
+      scrolled ? "text-gray-900" : "text-white"
+    }`}
+  >
+    Orium <span className={scrolled ? "font-thin text-gray-700" : "font-thin text-gray-200"}>Dusk</span>
+  </span>
+</div>
+
+      
 
       {/* ✅ Desktop Menu */}
       <div className="hidden md:flex items-center space-x-8">
@@ -210,7 +216,7 @@ const testimonials = [
       >
         <span
           className={`block h-0.5 rounded ${
-            scrolled ? "bg-gray-900" : "bg-white"
+            scrolled ? "bg-gray-900 " : "bg-white"
           } transition-all`}
         ></span>
         <span
@@ -360,10 +366,10 @@ const testimonials = [
               Why Choose Us
             </span>
             <h2 className="text-4xl lg:text-5xl font-serif font-normal text-gray-900 mb-6 tracking-tight">
-              Everything You Need for <span className="italic">Perfect Vidios</span>
+             All your post-production needs—handled in one place.
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto font-light leading-relaxed">
-              We provide comprehensive Perfect Vidio planning services with attention to every detail
+            Seamless workflows. Exceptional quality. Delivered on time, Every time.
             </p>
           </div>
 
@@ -393,7 +399,7 @@ const testimonials = [
               Our Services
             </span>
             <h2 className="text-4xl lg:text-5xl font-serif font-normal text-gray-900 mb-6 tracking-tight">
-              Comprehensive <span className="italic">Perfect Vidio Solutions</span>
+           The complete hub for all things content perfection.
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto font-light leading-relaxed">
               From intimate gatherings to grand celebrations, we handle it all
@@ -411,7 +417,6 @@ const testimonials = [
                   {service.description}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-900 font-medium text-lg">{service.price}</span>
                   <button className="bg-gray-900 text-white px-6 py-2 rounded-full font-normal hover:bg-gray-800 transition-all">
                     Learn More
                   </button>
@@ -434,23 +439,27 @@ const testimonials = [
                 Creating Memories That Last Forever
               </h2>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed font-light">
-                With over 10 years of experience, we've planned and executed thousands of successful Perfect Vidios. Our passion is turning your vision into reality.
+
+Orion Dusk is a creative place where storytelling meets precision.
+We specialize in transforming raw visuals into cinematic experiences — blending artistry, technology, and emotion in every frame. From the subtle art of color grading to immersive sound design and seamless visual effects, we bring your vision to life with clarity and style.
+<br />
+At Orion Dusk, we don’t just finish projects — we elevate stories. Whether you’re a filmmaker, brand, or creator, we provide the tools, talent, and expertise to make your content stand out in today’s visual landscape.
               </p>
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6">
                   <div className="text-4xl font-serif font-normal text-white mb-2">500+</div>
-                  <div className="text-gray-300 font-light">Perfect Vidios Planned</div>
+                  <div className="text-gray-300 font-light">Project Delivered</div>
                 </div>
                 <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6">
                   <div className="text-4xl font-serif font-normal text-white mb-2">98%</div>
                   <div className="text-gray-300 font-light">Client Satisfaction</div>
                 </div>
                 <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6">
-                  <div className="text-4xl font-serif font-normal text-white mb-2">50+</div>
+                  <div className="text-4xl font-serif font-normal text-white mb-2">10+</div>
                   <div className="text-gray-300 font-light">Team Members</div>
                 </div>
                 <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6">
-                  <div className="text-4xl font-serif font-normal text-white mb-2">10+</div>
+                  <div className="text-4xl font-serif font-normal text-white mb-2">5+</div>
                   <div className="text-gray-300 font-light">Years Experience</div>
                 </div>
               </div>
@@ -468,7 +477,7 @@ const testimonials = [
                   </div>
                   <div>
                     <div className="font-serif font-normal text-gray-900">Award Winning</div>
-                    <div className="text-sm text-gray-600 font-light">Best Vidio Planners 2024</div>
+                    {/* <div className="text-sm text-gray-600 font-light">Best Vidio Planners 2024</div> */}
                   </div>
                 </div>
               </div>
@@ -482,8 +491,8 @@ const testimonials = [
       <section id="contact" className="py-20 max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-3xl font-serif mb-6">Let’s Work Together</h2>
         <p className="text-gray-700 mb-8">
-          Whether it’s a wedding, engagement, or cinematic story, we’d love to
-          create something beautiful with you.
+  
+We merge creativity with precision, turning ideas into polished visuals and digital experiences. From cinematic post-production to seamless interfaces and engaging social campaigns, we handle it all — so your vision shines, every step of the way.
         </p>
         <Email/>
       </section>
@@ -515,11 +524,7 @@ const testimonials = [
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-14 h-14 rounded-full object-cover mr-4 border-2 border-gray-200"
-                  />
+                
                   <div>
                     <div className="font-serif font-normal text-gray-900">{testimonial.name}</div>
                     <div className="text-sm text-gray-600 font-light">{testimonial.role}</div>
@@ -535,7 +540,7 @@ const testimonials = [
       <section className="py-24 bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl lg:text-5xl font-serif font-normal mb-6 tracking-tight">
-            Ready to Plan Your Dream Perfect Vidio?
+            Ready to Plan Your Dreams...
           </h2>
           <p className="text-xl mb-8 text-gray-300 font-light leading-relaxed">
             Let's create something extraordinary together. Get started with a free consultation today.
@@ -550,26 +555,30 @@ const testimonials = [
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-xl font-serif">E</span>
-                </div>
-                <span className="font-serif font-semibold text-2xl text-gray-900 tracking-tight">Deepesh</span>
+               <img
+            src={"/a.png"} // 👉 Replace with your logo path
+          alt="Logo"
+          className="h-12 sm:h-14 md:h-16 w-auto object-contain"
+        />
+                <span className=" font-bold text-2xl text-gray-900 tracking-tight">Orium <span className='font-thin'>Dusk</span></span>  
               </div>
               <p className="text-gray-700 font-light">
-                Creating unforgettable moments and extraordinary experiences since 2014.
+                Creating unforgettable moments and extraordinary experiences since 2025.
               </p>
             </div>
             <div>
-              <h4 className="font-serif font-normal text-gray-900 mb-4">Services</h4>
+              <h4 className="font-serif font-bold text-gray-900 mb-4">Services</h4>
               <ul className="space-y-2 text-gray-700 font-light">
-                <li><a href="#" className="hover:text-gray-900 transition-colors">Wedding Planning</a></li>
-                <li><a href="#" className="hover:text-gray-900 transition-colors">Corporate Perfect Vidios</a></li>
-                <li><a href="#" className="hover:text-gray-900 transition-colors">Social Perfect Vidios</a></li>
-                <li><a href="#" className="hover:text-gray-900 transition-colors">Destination Perfect Vidios</a></li>
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Video Editing</a></li>
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Graphic Design</a></li>
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Motion Graphics</a></li>
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Web Design & Development</a></li>
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Social Media Management</a></li>
+                <li><a href="#" className="hover:text-gray-900 transition-colors">Sound Design</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-serif font-normal text-gray-900 mb-4">Company</h4>
+              <h4 className="font-serif font-bold text-gray-900 mb-4">Company</h4>
               <ul className="space-y-2 text-gray-700 font-light">
                 <li><a href="#" className="hover:text-gray-900 transition-colors">About Us</a></li>
                 <li><a href="#" className="hover:text-gray-900 transition-colors">Our Team</a></li>
@@ -579,24 +588,65 @@ const testimonials = [
             </div>
             <div>
               <h4 className="font-serif font-normal text-gray-900 mb-4">Connect</h4>
-              <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors">
-                  <span className="text-xl">f</span>
-                </a>
-                <a href="#" className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors">
-                  <span className="text-xl">𝕏</span>
-                </a>
-                <a href="#" className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors">
-                  <span className="text-xl">in</span>
-                </a>
-                <a href="#" className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors">
-                  <span className="text-xl">📷</span>
-                </a>
-              </div>
+             <div className="flex space-x-4">
+  <a
+    href="https://www.facebook.com/people/Orium-Dusk/pfbid02eQu2EuHimLZ1FohLLAXwjeKojnedhnmsWb3FBy2D36FmdX9vQJVr5YU4GAk3bPmdl/?mibextid=wwXIfr&rdid=e8dV05IP4Nottq1b&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17Yc46pVUZ%2F%3Fmibextid%3DwwXIfr"
+    className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors"
+  >
+    <i className="fab fa-facebook-f text-xl"></i>
+  </a>
+
+  <a
+    href="#"
+    className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors"
+  >
+    <i className="fab fa-x-twitter text-xl"></i>
+  </a>
+
+  <a
+    href="#"
+    className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors"
+  >
+    <i className="fab fa-linkedin-in text-xl"></i>
+  </a>
+
+  <a
+    href="https://www.instagram.com/orium_dusk/?igsh=dmh2bWY2Y3ByNm9t&utm_source=qr"
+    className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors"
+  >
+    <i className="fab fa-instagram text-xl"></i>
+  </a>
+</div>
+
+<br />
+
+<div className="flex space-x-4">
+  <a
+    href="https://www.youtube.com/@ORIUMDUSK"
+    className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors"
+  >
+    <i className="fab fa-youtube text-xl"></i>
+  </a>
+
+  <a
+    href="https://wa.me/"
+    className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors"
+  >
+    <i className="fab fa-whatsapp text-xl"></i>
+  </a>
+
+  <a
+    href="https://in.pinterest.com/oriumdusk/?invite_code=3883168b138846619708799fd002eda3&sender=1083045547797203796"
+    className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors"
+  >
+    <i className="fab fa-pinterest-p text-xl"></i>
+  </a>
+</div>
+
             </div>
           </div>
           <div className="border-t border-gray-300 pt-8 text-center text-gray-700 font-light">
-            <p>© 2024 Deepesh. All rights reserved. · Designed with love</p>
+            <p>© 2025  All rights reserved. · Gajendra Verma</p>
           </div>
         </div>
       </footer>
