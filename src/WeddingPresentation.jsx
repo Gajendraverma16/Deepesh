@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Email from './Email';
 
 const ModernPresentationSite = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -28,7 +29,7 @@ const slides = [
     subtitle: "Dynamic Motion Graphics for Brands & Creators",
     description:
       "Create visually engaging motion graphics that elevate your brand and captivate audiences.",
-     video:"https://v1.pinimg.com/videos/mc/hls/7b/a6/6f/7ba66fc09215bb43f77da635aaa64d74.m3u8",
+     video:"https://v1.pinimg.com/videos/iht/hls/6a/78/da/6a78da359d265af07210b50feb3adff9.m3u8",
     gradient: "from-gray-900/70 to-gray-700/60",
   },
   {
@@ -168,68 +169,84 @@ const testimonials = [
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl font-serif">D</span>
-              </div>
-              <span className={`font-serif font-semibold text-2xl tracking-tight ${scrolled ? 'text-gray-900' : 'text-white'}`}>
-                Deepesh
-              </span>
-            </div>
+<nav
+  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    scrolled ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-transparent "
+  }`}
+> 
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+    <div className="flex items-center justify-between h-20 pt-3 pr-6">
+      {/* ✅ Logo Section */}
+      <div className="flex items-center">
+        <img
+            src={scrolled ? "/a.png" : "/b.png"} // 👉 Replace with your logo path
+          alt="Logo"
+          className="h-12 sm:h-14 md:h-16 w-auto object-contain"
+        />
+      </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#home" className={`font-normal transition-colors ${
-                scrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
-              }`}>Home</a>
-              <a href="#services" className={`font-normal transition-colors ${
-                scrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
-              }`}>Services</a>
-              <a href="#about" className={`font-normal transition-colors ${
-                scrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
-              }`}>About</a>
-              <a href="#testimonials" className={`font-normal transition-colors ${
-                scrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
-              }`}>Testimonials</a>
-              <button className="bg-gray-900 text-white px-6 py-2.5 rounded-full font-normal hover:bg-gray-800 transition-all">
-                Book Appoinment
-              </button>
-            </div>
+      {/* ✅ Desktop Menu */}
+      <div className="hidden md:flex items-center space-x-8">
+        {["Home", "Services", "About", "Testimonials"].map((item) => (
+          <a
+            key={item}
+            href={`#${item.toLowerCase()}`}
+            className={`font-normal transition-colors ${
+              scrolled
+                ? "text-gray-700 hover:text-gray-900"
+                : "text-white/90 hover:text-white"
+            }`}
+          >
+            {item}
+          </a>
+        ))}
+        <Email />
+      </div>
 
-            {/* Mobile Menu Button */}
-            <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden"
-            >
-              <div className="w-6 h-5 flex flex-col justify-between">
-                <span className={`w-full h-0.5 ${scrolled ? 'bg-gray-900' : 'bg-white'} transition-all`}></span>
-                <span className={`w-full h-0.5 ${scrolled ? 'bg-gray-900' : 'bg-white'} transition-all`}></span>
-                <span className={`w-full h-0.5 ${scrolled ? 'bg-gray-900' : 'bg-white'} transition-all`}></span>
-              </div>
-            </button>
-          </div>
-        </div>
+      {/* ✅ Mobile Menu Button */}
+      <button
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className="md:hidden flex flex-col justify-between w-6 h-5"
+      >
+        <span
+          className={`block h-0.5 rounded ${
+            scrolled ? "bg-gray-900" : "bg-white"
+          } transition-all`}
+        ></span>
+        <span
+          className={`block h-0.5 rounded ${
+            scrolled ? "bg-gray-900" : "bg-white"
+          } transition-all`}
+        ></span>
+        <span
+          className={`block h-0.5 rounded ${
+            scrolled ? "bg-gray-900" : "bg-white"
+          } transition-all`}
+        ></span>
+      </button>
+    </div>
+  </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
-            <div className="px-4 py-3 space-y-3">
-              <a href="#home" className="block text-gray-700 hover:text-gray-900 font-normal py-2">Home</a>
-              <a href="#services" className="block text-gray-700 hover:text-gray-900 font-normal py-2">Services</a>
-              <a href="#about" className="block text-gray-700 hover:text-gray-900 font-normal py-2">About</a>
-              <a href="#testimonials" className="block text-gray-700 hover:text-gray-900 font-normal py-2">Testimonials</a>
-              <button className="w-full bg-gray-900 text-white px-6 py-2.5 rounded-full font-normal">
-                 Book Appoinment
-              </button>
-            </div>
-          </div>
-        )}
-      </nav>
+  {/* ✅ Mobile Menu */}
+  {isMenuOpen && (
+    <div className="md:hidden bg-white border-t border-gray-200">
+      <div className="px-4 py-3 space-y-3 text-center">
+        {["Home", "Services", "About", "Testimonials"].map((item) => (
+          <a
+            key={item}
+            href={`#${item.toLowerCase()}`}
+            className="block text-gray-700 hover:text-gray-900 font-normal py-2"
+          >
+            {item}
+          </a>
+        ))}
+        <Email />
+      </div>
+    </div>
+  )}
+</nav>
+
+
 
       {/* Hero Slider */}
      <section id="home" className="relative h-screen overflow-hidden">
@@ -274,14 +291,7 @@ const testimonials = [
             <p className="text-xl lg:text-2xl text-white/80 mb-8 leading-relaxed animate-slide-up-delay font-light">
               {slide.description}
             </p>
-            <div className="flex flex-wrap gap-4 animate-fade-in-delay">
-              <button className="bg-white text-gray-900 px-8 py-4 rounded-full font-normal text-lg hover:bg-gray-100 transition-all">
-                Start Planning
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-normal text-lg hover:bg-white hover:text-gray-900 transition-all">
-                View Portfolio
-              </button>
-            </div>
+               <Email/>
           </div>
         </div>
       </div>
@@ -289,23 +299,44 @@ const testimonials = [
   ))}
 
   {/* Slider Controls */}
-  <button
-    onClick={prevSlide}
-    className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center transition-all group"
+<button
+  onClick={prevSlide}
+  className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center transition-all group hidden md:flex"
+>
+  <svg
+    className="w-6 h-6 text-white group-hover:scale-110 transition-transform"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
   >
-    <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-    </svg>
-  </button>
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M15 19l-7-7 7-7"
+    />
+  </svg>
+</button>
 
-  <button
-    onClick={nextSlide}
-    className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center transition-all group"
+<button
+  onClick={nextSlide}
+  className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center transition-all group hidden md:flex"
+>
+  <svg
+    className="w-6 h-6 text-white group-hover:scale-110 transition-transform"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
   >
-    <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-    </svg>
-  </button>
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M9 5l7 7-7 7"
+    />
+  </svg>
+</button>
+
 
   {/* Slider Indicators */}
   <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
@@ -423,9 +454,6 @@ const testimonials = [
                   <div className="text-gray-300 font-light">Years Experience</div>
                 </div>
               </div>
-              <button className="bg-white text-gray-900 px-8 py-4 rounded-full font-normal text-lg hover:bg-gray-100 transition-all">
-                Learn Our Story
-              </button>
             </div>
             <div className="relative">
               <img
@@ -440,7 +468,7 @@ const testimonials = [
                   </div>
                   <div>
                     <div className="font-serif font-normal text-gray-900">Award Winning</div>
-                    <div className="text-sm text-gray-600 font-light">Best Perfect Vidio Planners 2024</div>
+                    <div className="text-sm text-gray-600 font-light">Best Vidio Planners 2024</div>
                   </div>
                 </div>
               </div>
@@ -457,12 +485,7 @@ const testimonials = [
           Whether it’s a wedding, engagement, or cinematic story, we’d love to
           create something beautiful with you.
         </p>
-        <a
-          href="mailto:hello@weddingportfolio.com"
-          className="inline-block px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition"
-        >
-          Contact Us
-        </a>
+        <Email/>
       </section>
 
       {/* Testimonials Section */}
@@ -517,14 +540,7 @@ const testimonials = [
           <p className="text-xl mb-8 text-gray-300 font-light leading-relaxed">
             Let's create something extraordinary together. Get started with a free consultation today.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-white text-gray-900 px-8 py-4 rounded-full font-normal text-lg hover:bg-gray-100 transition-all">
-              Schedule Consultation
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-normal text-lg hover:bg-white hover:text-gray-900 transition-all">
-              Contact Us
-            </button>
-          </div>
+          <div> <Email/></div>
         </div>
       </section>
 
